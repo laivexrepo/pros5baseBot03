@@ -3,16 +3,10 @@ Basic two motor bot
 
 This is a basic two motor based sample project to show how to setup a basic PROS program, this example shows the use of basic include files for general parameter settings.
 
-We are using to includes: portdef.hpp for all V5 brain port definitions and then globals.hpp / globals.cpp to declare all globally available variables and definitions.
+In this example the autonomous code is moved to a code file autonomous.cpp / autonomous.hpp and facilitates the use of different autonomous length functions.  In this case two are defined, but the sky is the limit.
 
-This version expands by showing how to include code modules which control specific parts of a robot, in this case drive base movements.  It uses drivebase.cpp to define a function called driveForDistance which takes as input a desired distance to move in cm (if negative it will drive backwards), the second parameter is used to set the speed of the movement.
+auto45sec() function is intended to hold the code to operate your bot for 45sec autonomous section of the competition. In here you should write all the code need to operate the bot for that period.  Then call this function in main.cpp in the void autonomous() section, and when the field control system triggers autonomous mode it will run the so defined 45sec routine you wrote.
 
-This code also introduces a global #define DEBUG to allow for more or less debugging related console messages to be displayed, it is set be default to tru, but setting it to false in globals.hpp will turn those messages off.
+autoSkill() function is intended to hold the code for the full 2 minute autonomous part of the game.  Again by calling this function in main.cpp in the autonomous() section, your bot would run your planned 2 minute autonomous code when triggered by the field control system.
 
-Please note that this code is set assuming the motor has a RED gear cartridge inserted, which is not the default.  In most cases you will want to set it to the GREEN cartridge by changing the following statement as shown:
-
-pros::Motor left_wheel (LEFT_MOTOR_PORT, MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
-
-Change to green cartridge as follows:
-
-pros::Motor left_wheel (LEFT_MOTOR_PORT, MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+You can write of course various versions of these functions for testing and just ensure you define them in autonomous.cpp / autonomous.hpp and then they are subsequently available for testing in your program. 
