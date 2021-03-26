@@ -92,7 +92,7 @@ void autonomous() {
  */
 void opcontrol() {
 	// Call one of the two autonomous functions here for testing
-	// comment/uncomment one of thefunctions
+	// comment/uncomment one of the functions
 
 	auto45sec();					// 45 sec autonomous routine
 
